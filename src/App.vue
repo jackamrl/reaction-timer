@@ -1,4 +1,4 @@
-<script >
+<script>
 import Block from "./components/Block.vue";
 export default {
   name: "App",
@@ -7,12 +7,22 @@ export default {
     return {
       isPlaying: false,
       delay: 0,
+      score: null,
+      showscore: false
     };
   },
   methods: {
     start() {
       this.delay = 2000 + Math.random() * 5000;
       this.isPlaying = true;
+      this.showscore = false
+
+
+    },
+    endGame(reactionTime) {
+      this.isPlaying = false;
+      this.score = reactionTime;
+      this.showscore = true
     }
   }
 };
@@ -23,7 +33,8 @@ export default {
   <div class="content">
     <h1>JackDev reaction Timer</h1>
     <button @click="start" :disabled="isPlaying">Play</button>
-    <Block v-if="isPlaying" :delay="delay" />
+    <Block v-if="isPlaying" :delay="delay" @end="endGame" />
+    <p v-if="showscore">Reaction time : {{ score }}</p>
   </div>
 </template>
 
@@ -47,6 +58,13 @@ export default {
     border: 2px solid#fff;
     outline: none;
     cursor: pointer;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    margin: 10px auto;
   }
 }
 </style>
