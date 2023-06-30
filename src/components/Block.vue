@@ -1,6 +1,6 @@
 <template>
     <div v-if="showBlock" class="block" @click="stopTimer">
-        click me
+        CLICK ME !
     </div>
 </template>
 
@@ -30,7 +30,9 @@ export default {
         stopTimer() {
             clearInterval(this.timer);
             this.$emit('end', this.reactionTime);
-        }
+        },
+
+
     }
 }
 </script>
@@ -38,13 +40,15 @@ export default {
 <style lang="scss" scoped>
 .block {
     width: 400px;
-    background-color: rgb(124, 116, 67);
+    background-color: rgb(23 51 37);
     border-radius: 10px;
     margin: 40px auto;
+    font-weight: bolder;
     text-align: center;
     line-height: 100px;
-    font-size: 20px;
+    font-size: 1.4rem;
     color: white;
     padding: 100px 0;
+    cursor: pointer;
 }
 </style>

@@ -6,6 +6,11 @@
   padding: 2rem;
 
   font-weight: normal;
+
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
 }
 
 a,
